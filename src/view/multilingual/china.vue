@@ -84,7 +84,7 @@ export default {
     getMsg () {
       var d = 'zh'
       this.getLan({d}).then(res => {
-        if (res.data.code === 0) {
+        if (res.data.code === '0') {
           this.lan = res.data.data
         }
       })
