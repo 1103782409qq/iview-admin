@@ -40,60 +40,64 @@
 
 </template>
 <script>
-import {mapActions} from 'vuex'
+    import {mapActions} from 'vuex';
 
-export default {
-  name: 'china',
-  data () {
-    return {
-      value: '',
-      lan: {
-        'HOME': {
-          'TITLE': '你好',
-          'SELECT': '更改语言',
-          'HEADER': {},
-          'TOPAREA': {
-            'LEFT': {},
-            'RIGHT': {}
-          },
-          'CONTENT1': {},
-          'CONTENT2': {},
-          'CONTENT3': {},
-          'FOOTER': {}
-        }
-      }
-    }
-  },
-  mounted () {
-    this.getMsg()
-  },
-  methods: {
-    ...mapActions([
-      'handleLogin',
-      'getUserInfo',
-      'getLan',
-      'setLan'
-    ]),
-    submitLan (val) {
-      var type = 'zh'
-      var content = this.lan
-      this.setLan({type, content}).then(res => {
-        console.log(res)
-      })
-    },
-    getMsg () {
-      var d = 'zh'
-      this.getLan({d}).then(res => {
-        if (res.data.code === '0') {
-          this.lan = res.data.data
-        }
-      })
-    },
-    gotoFront () {
+    export default {
+        name: 'china',
+        data () {
+            return {
+                value: '',
+                lan: {
+                    'HOME': {
+                        'TITLE': '你好',
+                        'SELECT': '更改语言',
+                        'HEADER': {},
+                        'TOPAREA': {
+                            'LEFT': {},
+                            'RIGHT': {}
+                        },
+                        'CONTENT1': {},
+                        'CONTENT2': {},
+                        'CONTENT3': {},
+                        'FOOTER': {}
+                    }
+                }
+            };
+        },
+        mounted () {
+            this.getMsg();
+        },
+        methods: {
+            ...mapActions([
+                'handleLogin',
+                'getUserInfo',
+                'getLan',
+                'setLan'
+            ]),
+            submitLan (val) {
+                var type = 'zh';
+                var content = this.lan;
+                this.setLan({type, content}).then(res => {
+                    if (res.data.code === '0') {
+                        this.$Message.success('submit success');
+                    } else {
+                        this.$Message.success('submit error');
+                    }
+                });
+            },
+            getMsg () {
+                var d = 'zh';
+                this.getLan({d}).then(res => {
+                    if (res.data.code === '0') {
+                        this.lan = res.data.data;
+                    }
+                });
+            },
+            gotoFront () {
 
-    }
-  }
-}
+            }
+        }
+    };
 </script>
 <style>
     .input-css {
