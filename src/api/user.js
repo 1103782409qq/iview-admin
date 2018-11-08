@@ -1,6 +1,6 @@
 import axios from '@/libs/api.request'
 
-export const login = ({ userName, password }) => {
+export const login = ({userName, password}) => {
   const data = {
     userName,
     password
@@ -29,49 +29,26 @@ export const logout = (token) => {
   })
 }
 
-export const getMessage = () => {
+export const getLan = (type) => {
   return axios.request({
-    url: 'message/init',
+    url: 'http://192.168.0.117:8755/api/Web/packageLang',
+    params: {
+      type
+    },
     method: 'get'
   })
 }
-
-export const getContentByMsgId = msg_id => {
+export const setLan = (type, content) => {
+  const data = {
+    type,
+    content
+  }
   return axios.request({
-    url: 'message/content',
-    method: 'get',
-    params: {
-      msg_id
-    }
-  })
-}
-
-export const hasRead = msg_id => {
-  return axios.request({
-    url: 'message/has_read',
+    url: 'http://192.168.0.117:8755/api/Web/packageLang',
     method: 'post',
-    data: {
-      msg_id
-    }
-  })
-}
-
-export const removeReaded = msg_id => {
-  return axios.request({
-    url: 'message/remove_readed',
-    method: 'post',
-    data: {
-      msg_id
-    }
-  })
-}
-
-export const restoreTrash = msg_id => {
-  return axios.request({
-    url: 'message/restore',
-    method: 'post',
-    data: {
-      msg_id
+    data,
+    headers: {
+      'Content-Type': 'text/plain;charset=utf-8'
     }
   })
 }
