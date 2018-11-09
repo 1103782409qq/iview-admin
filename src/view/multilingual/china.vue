@@ -32,9 +32,11 @@
         <p>FOOTER</p>
         <Input v-for="(item, index) in lan.HOME.FOOTER" :key="index+'FOOTER'"
                v-model="lan.HOME.FOOTER[index]" class="input-css"></Input>
+<div style="display: flex;justify-content:flex-end">
+    <Button type="primary" @click="submitLan(lan)">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>
+    <Button type="primary" style="margin-left: 100px" @click="gotoFront()">查看前台</Button>
+</div>
 
-        <Button type="primary" @click="submitLan(lan)">提交</Button>
-        <Button type="primary" @click="gotoFront()">查看前台网站</Button>
 
     </div>
 
@@ -94,7 +96,7 @@
                 });
             },
             gotoFront () {
-
+                window.open('http://65.49.227.65')
             }
         }
     };
