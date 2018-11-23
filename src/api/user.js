@@ -30,13 +30,17 @@ export const logout = (token) => {
 }
 
 export const getLan = (type) => {
-  return axios.request({
-    url: 'http://192.168.0.117:8755/api/Web/packageLang',
-    params: {
-      type
-    },
-    method: 'get'
-  })
+    const data = {
+        type
+    }
+    return axios.request({
+        url: 'http://crm.bex500.com/api/Web/packageLang',
+        method: 'post',
+        data,
+        // headers: {
+        //     'Content-Type': 'text/plain;charset=utf-8'
+        // }
+    })
 }
 export const setLan = (type, content) => {
   const data = {
@@ -44,7 +48,7 @@ export const setLan = (type, content) => {
     content
   }
   return axios.request({
-    url: 'http://192.168.0.117:8755/api/Web/packageLang',
+    url: 'http://crm.bex500.com/api/Web/packageLang',
     method: 'post',
     data,
     headers: {
