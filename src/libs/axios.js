@@ -45,6 +45,9 @@ class HttpRequest {
             var signStr = '';
             for (var i in test) {
                 if (test[i] && test[i] != '') {
+                    // if(typeof test[i] =="object"){
+                    //     test[i]=JSON.stringify(test[i]);
+                    // }
                     signStr = signStr + '&' + i + '=' + test[i];
                 }
             }

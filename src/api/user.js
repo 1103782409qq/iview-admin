@@ -34,7 +34,7 @@ export const getLan = (type) => {
         type
     }
     return axios.request({
-        url: 'http://crm.bex500.com/api/Web/packageLang',
+        url: 'http://192.168.0.6:8755/api/Web/packageLang',
         method: 'post',
         data,
         // headers: {
@@ -48,7 +48,7 @@ export const setLan = (type, content) => {
     content
   }
   return axios.request({
-    url: 'http://crm.bex500.com/api/Web/packageLang',
+    url: 'http://192.168.0.6:8755/api/Web/packageLang',
     method: 'post',
     data,
     headers: {
