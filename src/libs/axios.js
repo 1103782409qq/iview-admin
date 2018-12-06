@@ -16,7 +16,7 @@ const addErrorLog = errorInfo => {
 
 class HttpRequest {
   constructor (baseUrl = baseURL) {
-    this.baseUrl = baseUrl
+    this.baseUrl = 'http://crm.bex500.com/'
     this.queue = {}
   }
   getInsideConfig () {

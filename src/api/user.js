@@ -34,12 +34,9 @@ export const getLan = (type) => {
         type
     }
     return axios.request({
-        url: 'http://crm.bex500.com/index/Account/packageLang',
+        url: 'index/Account/packageLang',
         method: 'post',
         data,
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
     })
 }
 export const setLan = (type, content) => {
@@ -48,11 +45,8 @@ export const setLan = (type, content) => {
         content
     }
     return axios.request({
-        url: 'http://crm.bex500.com/index/Account/packageLang',
+        url: 'index/Account/packageLang',
         method: 'post',
         data,
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
     })
 }
