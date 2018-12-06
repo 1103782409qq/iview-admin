@@ -95,7 +95,7 @@
                 });
             },
             gotoFront () {
-                window.open('http://65.49.227.65')
+                window.open('http://test.bex500.com')
             }
         }
     };
