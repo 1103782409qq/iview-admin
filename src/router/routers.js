@@ -207,7 +207,6 @@ export default [
               path: 'commonProblem',
               name: 'commonProblem',
               meta: {
-                  icon: 'ios-book',
                   title: '常见问题'
               },
               component: () => import('@/view/webcontentedit/commonProblem.vue')
@@ -219,6 +218,63 @@ export default [
                   title: 'rule'
               },
               component: () => import('@/view/webcontentedit/rule.vue')
+          },
+          {
+              path: 'aboutComp',
+              name: 'aboutComp',
+              meta: {
+                  title: 'aboutComp'
+              },
+              component: () => import('@/view/webcontentedit/aboutComp.vue')
+          },
+          {
+              path: 'cusSuport',
+              name: 'cusSuport',
+              meta: {
+                  title: 'cusSuport'
+              },
+              component: () => import('@/view/webcontentedit/cusSuport.vue')
+          },
+          {
+              path: 'notice',
+              name: 'notice',
+              meta: {
+                  title: 'notice'
+              },
+              component: () => import('@/view/webcontentedit/notice.vue')
+          },
+
+          {
+              path: 'privacyPolicy',
+              name: 'privacyPolicy',
+              meta: {
+                  title: 'privacyPolicy'
+              },
+              component: () => import('@/view/webcontentedit/privacyPolicy.vue')
+          },
+          {
+              path: 'safety',
+              name: 'safety',
+              meta: {
+                  title: 'safety'
+              },
+              component: () => import('@/view/webcontentedit/safety.vue')
+          },
+          {
+              path: 'serviceCharge',
+              name: 'serviceCharge',
+              meta: {
+                  title: 'serviceCharge'
+              },
+              component: () => import('@/view/webcontentedit/serviceCharge.vue')
+          },
+          {
+              path: 'termsService',
+              name: 'termsService',
+              meta: {
+                  title: 'termsService'
+              },
+              component: () => import('@/view/webcontentedit/termsService.vue')
           },
         // {
         //   path: 'editor',

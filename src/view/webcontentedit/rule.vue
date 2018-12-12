@@ -1,6 +1,6 @@
 <template>
     <div class="components-container">
-        <button @click="setArticle()">提交</button>
+        <Button type="primary" @click="setArticle()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>
         <div class="editor-container" v-if="ueBool">
             <UE :defaultMsg=defaultMsg :config=config :id=ue1 ref="ue"></UE>
         </div>
@@ -28,6 +28,11 @@
         },
         mounted () {
             this.getMsg()
+        },
+        watch:{      //监听路由变化
+            $route( to , from ){
+                this.getMsg()
+            }
         },
         methods: {
             ...mapActions([

@@ -12,7 +12,7 @@
 
     export default {
         components: {UE},
-        name: 'commonProblem',
+        name: 'privacyPolicy',
         data () {
             return {
                 ueBool:false,
@@ -23,7 +23,7 @@
                     initialFrameWidth: null,
                     initialFrameHeight: 350
                 },
-                ue1: "ue1", // 不同编辑器必须不同的id
+                ue1: "privacyPolicy", // 不同编辑器必须不同的id
             };
         },
         mounted () {
@@ -42,10 +42,10 @@
             setArticle () {
                 let content = this.$refs.ue.getUEContent(); // 调用子组件方法
                 var data={
-                    title:"常见问题",
+                    title:"隐私政策",
                     type : 1,
                     content : content,
-                    id:5
+                    id:8
                 }
                 this.storeArticle(data).then(res => {
                     if (res.data.errcode === '0') {
@@ -63,7 +63,7 @@
                     if (res.data.errcode === '0') {
                         var d=res.data.data;
                         for(var i in d){
-                            if(d[i].id==5) {
+                            if(d[i].id==8) {
                                 this.defaultMsg=d[i].content;
                                 this.ueBool=true;
                             }
