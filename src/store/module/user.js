@@ -1,4 +1,4 @@
-import { login, logout, getUserInfo, getLan, setLan } from '@/api/user'
+import { login, logout, getUserInfo, getLan, getArticle,storeArticle,setLan } from '@/api/user'
 import { setToken, getToken } from '@/libs/util'
 
 export default {
@@ -113,6 +113,36 @@ export default {
           reject(error)
         }
       })
-    }
+    },
+      // 获取文章
+      getArticle ({ commit }, {d}) {
+          return new Promise((resolve, reject) => {
+              try {
+                  getArticle(d).then(res => {
+                      const data = res
+                      resolve(data)
+                  }).catch(err => {
+                      reject(err)
+                  })
+              } catch (error) {
+                  reject(error)
+              }
+          })
+      },
+      // 文章编辑
+      storeArticle ({ commit }, data) {
+          return new Promise((resolve, reject) => {
+              try {
+                  storeArticle(data).then(res => {
+                      const data = res
+                      resolve(data)
+                  }).catch(err => {
+                      reject(err)
+                  })
+              } catch (error) {
+                  reject(error)
+              }
+          })
+      },
   }
 }

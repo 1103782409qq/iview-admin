@@ -1,4 +1,6 @@
 import Main from '@/components/main';
+import ue from '../view/webcontentedit/editor';
+
 // import parentView from '@/components/parent-view'
 
 /**
@@ -191,35 +193,46 @@ export default [
             // }
         ]
     },
-    // {
-    //   path: '/update',
-    //   name: 'update',
-    //   meta: {
-    //     icon: 'md-cloud-upload',
-    //     title: '数据上传'
-    //   },
-    //   component: Main,
-    //   children: [
-    //     {
-    //       path: 'update_table_page',
-    //       name: 'update_table_page',
-    //       meta: {
-    //         icon: 'ios-document',
-    //         title: '上传Csv'
-    //       },
-    //       component: () => import('@/view/update/update-table.vue')
-    //     },
-    //     {
-    //       path: 'update_paste_page',
-    //       name: 'update_paste_page',
-    //       meta: {
-    //         icon: 'md-clipboard',
-    //         title: '粘贴表格数据'
-    //       },
-    //       component: () => import('@/view/update/update-paste.vue')
-    //     }
-    //   ]
-    // },
+
+    {
+      path: '/webcontentedit',
+      name: 'webcontentedit',
+      meta: {
+        icon: 'md-cloud-upload',
+        title: '网站内容编辑'
+      },
+      component: Main,
+      children: [
+          {
+              path: 'commonProblem',
+              name: 'commonProblem',
+              meta: {
+                  icon: 'ios-book',
+                  title: '常见问题'
+              },
+              component: () => import('@/view/webcontentedit/commonProblem.vue')
+          },
+          {
+              path: 'rule',
+              name: 'rule',
+              meta: {
+                  title: 'rule'
+              },
+              component: () => import('@/view/webcontentedit/rule.vue')
+          },
+        // {
+        //   path: 'editor',
+        //   name: 'editor',
+        //   meta: {
+        //     icon: 'md-clipboard',
+        //     title: 'editor'
+        //   },
+        //     component: () => import('@/view/webcontentedit/editor.vue')
+        // },
+
+
+      ]
+    },
     // {
     //   path: '/excel',
     //   name: 'excel',

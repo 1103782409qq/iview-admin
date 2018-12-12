@@ -50,3 +50,21 @@ export const setLan = (type, content) => {
         data,
     })
 }
+
+export const getArticle = (type) => {
+    const data = {
+        type
+    }
+    return axios.request({
+        url: 'index/Account/getArticle',
+        method: 'post',
+        data,
+    })
+}
+export const storeArticle = (data) => {
+    return axios.request({
+        url: 'index/Account/storeArticle',
+        method: 'post',
+        data,
+    })
+}
