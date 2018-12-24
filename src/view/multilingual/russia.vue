@@ -33,10 +33,26 @@
         <Input v-for="(item, index) in lan.HOME.FOOTER" :key="index+'FOOTER'"
                v-model="lan.HOME.FOOTER[index]" class="input-css"></Input>
 
-        <div style="display: flex;justify-content:flex-end">
-            <Button type="primary" @click="submitLan(lan)">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>
-            <Button type="primary" style="margin-left: 100px" @click="gotoFront()">查看前台</Button>
+        <p>ERRMSG</p>
+        <div v-for="(item, index) in lan.HOME.ERRMSG" :key="index+'ERRMSG'" style="width: 300px;display: inline-block;">
+            <span>{{lan.HOME.ERRMSG[index].code}}</span>
+            <Input
+                   v-model="lan.HOME.ERRMSG[index].msg" class="input-css"></Input>
         </div>
+        <div style="display: inline-block;">
+            <Input style="display: inline-block;width: 50px" v-show="errMsgBool" v-model="addMsgData.code" class=""></Input>
+            <Input style="display: inline-block;" v-show="errMsgBool" v-model="addMsgData.msg" class="input-css"></Input>
+        </div>
+        <Button  style="display: inline-block;" type="primary"  v-show="!errMsgBool" @click="addErrData()">add</Button>
+        <Button  style="margin-left: 30px;display: inline-block;" type="primary"  v-show="errMsgBool" @click="confirmErrData()">confirm</Button>
+
+
+        <div style="display: flex;justify-content:flex-end">
+    <Button type="primary" @click="submitLan(lan)">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>
+    <Button type="primary" style="margin-left: 100px" @click="gotoFront()">查看前台</Button>
+</div>
+
+
     </div>
 
 </template>
@@ -60,8 +76,14 @@
                         'CONTENT1': {},
                         'CONTENT2': {},
                         'CONTENT3': {},
-                        'FOOTER': {}
+                        'FOOTER': {},
+                        'ERRMSG':[]
                     }
+                },
+                errMsgBool:false,
+                addMsgData:{
+                    code:'',
+                    msg:''
                 }
             };
         },
@@ -79,18 +101,26 @@
                 var type = 'ru';
                 var content = this.lan;
                 this.setLan({type, content}).then(res => {
-                    if (res.data.code === '0') {
+                    if (res.data.errcode === '0') {
                         this.$Message.success('submit success');
                     } else {
                         this.$Message.success('submit error');
                     }
                 });
             },
+            addErrData(){
+                this.errMsgBool=true;
+            },
+            confirmErrData(){
+                this.lan.HOME.ERRMSG.push(JSON.parse(JSON.stringify(this.addMsgData)));
+                this.errMsgBool=!this.errMsgBool;
+            },
             getMsg () {
                 var d = 'ru';
                 this.getLan({d}).then(res => {
-                    if (res.data.code === '0') {
+                    if (res.data.errcode === '0') {
                         this.lan = res.data.data;
+
                     }
                 });
             },

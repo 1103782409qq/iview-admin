@@ -32,7 +32,22 @@
         <p>FOOTER</p>
         <Input v-for="(item, index) in lan.HOME.FOOTER" :key="index+'FOOTER'"
                v-model="lan.HOME.FOOTER[index]" class="input-css"></Input>
-<div style="display: flex;justify-content:flex-end">
+
+        <p>ERRMSG</p>
+        <div v-for="(item, index) in lan.HOME.ERRMSG" :key="index+'ERRMSG'" style="width: 300px;display: inline-block;">
+            <span>{{lan.HOME.ERRMSG[index].code}}</span>
+            <Input
+                   v-model="lan.HOME.ERRMSG[index].msg" class="input-css"></Input>
+        </div>
+        <div style="display: inline-block;">
+            <Input style="display: inline-block;width: 50px" v-show="errMsgBool" v-model="addMsgData.code" class=""></Input>
+            <Input style="display: inline-block;" v-show="errMsgBool" v-model="addMsgData.msg" class="input-css"></Input>
+        </div>
+        <Button  style="display: inline-block;" type="primary"  v-show="!errMsgBool" @click="addErrData()">add</Button>
+        <Button  style="margin-left: 30px;display: inline-block;" type="primary"  v-show="errMsgBool" @click="confirmErrData()">confirm</Button>
+
+
+        <div style="display: flex;justify-content:flex-end">
     <Button type="primary" @click="submitLan(lan)">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>
     <Button type="primary" style="margin-left: 100px" @click="gotoFront()">查看前台</Button>
 </div>
@@ -61,8 +76,14 @@
                         'CONTENT1': {},
                         'CONTENT2': {},
                         'CONTENT3': {},
-                        'FOOTER': {}
+                        'FOOTER': {},
+                        'ERRMSG':[]
                     }
+                },
+                errMsgBool:false,
+                addMsgData:{
+                    code:'',
+                    msg:''
                 }
             };
         },
@@ -80,18 +101,119 @@
                 var type = 'zh';
                 var content = this.lan;
                 this.setLan({type, content}).then(res => {
-                    if (res.data.code === '0') {
+                    if (res.data.errcode === '0') {
                         this.$Message.success('submit success');
                     } else {
                         this.$Message.success('submit error');
                     }
                 });
             },
+            addErrData(){
+                this.errMsgBool=true;
+            },
+            confirmErrData(){
+                this.lan.HOME.ERRMSG.push(JSON.parse(JSON.stringify(this.addMsgData)));
+                this.errMsgBool=!this.errMsgBool;
+            },
             getMsg () {
                 var d = 'zh';
                 this.getLan({d}).then(res => {
-                    if (res.data.code === '0') {
+                    if (res.data.errcode === '0') {
                         this.lan = res.data.data;
+                        // this.lan.HOME.ERRMSG = [
+                        //     {code:10001,msg:'签名校验失败'},
+                        //     {code:10002,msg:'非法用户'},
+                        //     {code:10003,msg:'请求失败'},
+                        //
+                        //
+                        //     {code:20001,msg:'登录邮箱必填'},
+                        //     {code:20002,msg:'登录邮箱格式错误'},
+                        //     {code:20003,msg:'登录邮箱已经占用'},
+                        //     {code:20004,msg:'登录密码必填'},
+                        //     {code:20011,msg:'登录密码至少8位'},
+                        //     {code:20005,msg:'邮箱验证码必填'},
+                        //     {code:20006,msg:'手机号必填'},
+                        //     {code:20007,msg:'手机号已经占用'},
+                        //     {code:20008,msg:'验证码校验失败'},
+                        //     {code:20009,msg:'非法注册入口'},
+                        //     {code:20010,msg:'注册成功'},
+                        //
+                        //
+                        //
+                        //     {code:30001,msg:'用户不存在'},
+                        //     {code:30002,msg:'您已经开启了谷歌二次验证,请填写二次验证码'},
+                        //     {code:30003,msg:'二次验证检验失败'},
+                        //     {code:30004,msg:'密码错误'},
+                        //     {code:30005,msg:'登陆成功'},
+                        //     {code:30006,msg:'登陆成功,其他客户端登陆失效'},
+                        //
+                        //
+                        //
+                        //
+                        //     {code:40001,msg:'请选择用户'},
+                        //     {code:40002,msg:'新密码不能为空'},
+                        //     {code:40003,msg:'修改密码成功'},
+                        //
+                        //
+                        //     {code:50001,msg:'旧密码错误'},
+                        //     {code:50002,msg:'修改基本信息成功'},
+                        //
+                        //
+                        //     {code:60001,msg:'账户不存在'},
+                        //
+                        //
+                        //     {code:70001,msg:'用户没有绑定钱包地址'},
+                        //
+                        //
+                        //     {code:80001,msg:'请选择提币用户'},
+                        //     {code:80002,msg:'请选择提币类型'},
+                        //     {code:80003,msg:'请填写提币地址'},
+                        //     {code:80004,msg:'请填写提币数量'},
+                        //     {code:80005,msg:'无效的提币类型'},
+                        //     {code:80006,msg:'提币失败,您的余额不够支出手续费'},
+                        //     {code:80007,msg:'提币限制'},
+                        //     {code:80008,msg:'提币申请失败,请重试'},
+                        //     {code:80009,msg:'提币申请成功,请等待审核'},
+                        //
+                        //
+                        //     {code:90001,msg:'资产不足,无法下单'},
+                        //     {code:90002,msg:'交易成功'},
+                        //
+                        //
+                        //     {code:11001,msg:'请填写邮箱/手机号'},
+                        //     {code:11002,msg:'未知的场景'},
+                        //     {code:11003,msg:'请输入正确手机号'},
+                        //     {code:11004,msg:'发送失败,请重试'},
+                        //     {code:11005,msg:'验证码已经发送,请注意查收'},
+                        //
+                        //
+                        //     {code:12001,msg:'验证码不能为空'},
+                        //     {code:12002,msg:'验证码校验失败'},
+                        //     {code:12003,msg:'校验成功'},
+                        //
+                        //     {code:13001,msg:'请选择设置止损/盈的平仓订单'},
+                        //     {code:13002,msg:'请填写止损/止盈价位'},
+                        //     {code:13003,msg:'请求类型不能为空'},
+                        //     {code:13004,msg:'止损价格非法'},
+                        //     {code:13005,msg:'止盈价格非法'},
+                        //     {code:13006,msg:'设置成功'},
+                        //
+                        //
+                        //     {code:14001,msg:'请选择平仓订单'},
+                        //     {code:14002,msg:'平仓成功'},
+                        //
+                        //
+                        //     {code:15001,msg:'您尚未绑定二次验证'},
+                        //
+                        //
+                        //     {code:16001,msg:'请选择问题类型'},
+                        //     {code:16002,msg:'请填写问题内容'},
+                        //     {code:16003,msg:'反馈成功'},
+                        //     {code:16004,msg:'反馈失败'},
+                        //
+                        // ];
+                        // console.log(this.lan)
+
                     }
                 });
             },
