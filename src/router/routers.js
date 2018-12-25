@@ -99,7 +99,8 @@ export default [
                     icon: 'ios-book',
                     title: 'english'
                 },
-                component: () => import('@/view/multilingual/english.vue')
+                component: () => import('@/view/multilingual/china.vue')
+
             },
             {
                 path: 'japan',
@@ -108,7 +109,8 @@ export default [
                     icon: 'ios-book',
                     title: 'japan'
                 },
-                component: () => import('@/view/multilingual/japan.vue')
+                component: () => import('@/view/multilingual/china.vue')
+
             },
             {
                 path: 'korea',
@@ -117,7 +119,8 @@ export default [
                     icon: 'ios-book',
                     title: 'korea'
                 },
-                component: () => import('@/view/multilingual/korea.vue')
+                component: () => import('@/view/multilingual/china.vue')
+
             },
             {
                 path: 'russia',
@@ -126,7 +129,8 @@ export default [
                     icon: 'ios-book',
                     title: 'russia'
                 },
-                component: () => import('@/view/multilingual/russia.vue')
+                component: () => import('@/view/multilingual/china.vue')
+
             }
             // {
             //   path: 'count_to_page',
