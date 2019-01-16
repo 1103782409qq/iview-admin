@@ -280,6 +280,23 @@ export default [
               },
               component: () => import('@/view/webcontentedit/termsService.vue')
           },
+
+          {
+              path: 'disclaimer',
+              name: 'disclaimer',
+              meta: {
+                  title: 'disclaimer'
+              },
+              component: () => import('@/view/webcontentedit/disclaimer.vue')
+          },
+          {
+              path: 'contactUs',
+              name: 'contactUs',
+              meta: {
+                  title: 'contactUs'
+              },
+              component: () => import('@/view/webcontentedit/contactUs.vue')
+          },
         // {
         //   path: 'editor',
         //   name: 'editor',
