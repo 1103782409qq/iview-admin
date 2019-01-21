@@ -1,8 +1,8 @@
 <template>
     <div class="components-container">
-        <Button type="primary" @click="setArticle()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>
+        <!--<Button type="primary" @click="setArticle()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>-->
         <div class="editor-container" v-if="ueBool">
-            <UE :defaultMsg=defaultMsg :config=config :id=ue1 ref="ue"></UE>
+            <iframe class="ifa-css" :src="pdfUrl"></iframe>
         </div>
     </div>
 </template>
@@ -24,7 +24,9 @@
                     initialFrameHeight: 350
                 },
                 ue1: "ue1", // 不同编辑器必须不同的id
-            };
+                pdfUrl:'http://test.bex500.com/bk/ueditor/index.html#5,常见问题'
+
+        };
         },
         mounted () {
             this.getMsg()

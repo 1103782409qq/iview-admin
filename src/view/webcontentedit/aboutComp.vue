@@ -1,8 +1,9 @@
 <template>
     <div class="components-container">
-        <Button type="primary" @click="setArticle()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>
+        <!--<Button type="primary" @click="setArticle()">提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</Button>-->
         <div class="editor-container" v-if="ueBool">
-            <UE :defaultMsg=defaultMsg :config=config :id=ue1 ref="ue"></UE>
+            <!--<iframe class="ifa-css" :src="pdfUrl"></iframe>-->
+            <iframe class="ifa-css" :src="pdfUrl"></iframe>
         </div>
     </div>
 </template>
@@ -23,14 +24,18 @@
                     initialFrameWidth: null,
                     initialFrameHeight: 350
                 },
-                ue1: "aboutComp", // 不同编辑器必须不同的id
+                ue1: "aboutComp", // 不同编辑器必须不watch同的id
+                pdfUrl:'http://test.bex500.com/bk/ueditor/index.html#7,关于公司',
+                editType:''
             };
         },
         mounted () {
+            console.log(this.$route)
             this.getMsg()
         },
         watch:{      //监听路由变化
             $route( to , from ){
+
                 this.getMsg()
             }
         },

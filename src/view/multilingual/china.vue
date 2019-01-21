@@ -125,6 +125,9 @@
             };
         },
         mounted () {
+            console.log(this.$route.name)
+            // alert('mounted',this.$route.name)
+
             switch (this.$route.name) {
                 case 'china':
                     this.lanType='zh';
@@ -146,6 +149,8 @@
         },
         watch:{
             $route(to,from){
+                // alert('to',to)
+                console.log(to)
                 switch (to.name) {
                     case 'china':
                         this.lanType='zh';
